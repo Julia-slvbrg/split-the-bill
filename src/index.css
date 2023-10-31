@@ -14,7 +14,7 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
+/* a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
@@ -54,7 +54,8 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
+ */
+/* 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -67,3 +68,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+ */
