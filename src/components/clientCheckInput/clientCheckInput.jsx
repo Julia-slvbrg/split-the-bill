@@ -1,4 +1,4 @@
-export const clientCheckInput = ({ client, index }) => {
+export const ClientCheckInput = ({ client, index }) => {
     return(
        
         <label>
@@ -13,4 +13,4 @@ export const clientCheckInput = ({ client, index }) => {
     )
 }
 
-export default clientCheckInput
+export default ClientCheckInput

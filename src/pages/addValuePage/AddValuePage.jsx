@@ -1,3 +1,4 @@
+import ClientCheckInput from "../../components/clientCheckInput/clientCheckInput";
 import { GlobalContext } from "../../components/contexts/GlobalContext"
 import { useContext } from "react"
 
@@ -41,7 +42,7 @@ export const AddValuePage = () => {
                           
                                 {clientList.map((client, index) =>{
                                     return(
-                                        <clientCheckInput
+                                        <ClientCheckInput
                                             key={index}
                                             index={index}
                                             client={client}

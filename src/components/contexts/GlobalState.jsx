@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GlobalContext } from "./GlobalContext";
 
 export default function GlobaState({ children }) {
 
     const [clientList, setClientList] = useState([]);
     const [newClient, setNewClient] = useState('');
-    const [openModal, setOpenModal] = useState(false);
     const [newFood, setNewFood] = useState('');
     const [food, setFood] = useState([]);
     const [newValue, setNewValue] = useState();
@@ -15,12 +14,20 @@ export default function GlobaState({ children }) {
     const clientHandler = (e) => {
         setNewClient(e.target.value)
     };
-
+   
     const addClient =  (e) => {
         e.preventDefault()
 
-        setClientList([...clientList, newClient])
-        setNewClient('')
+        if(newClient === '' || newClient === ' ') return alert('O nome não pode ser vazio.');
+
+        const checkClient = clientList.find((client) => client.toLocaleLowerCase() === newClient.toLocaleLowerCase());
+        
+        if(!checkClient){
+            setClientList([...clientList, newClient])
+            setNewClient('')
+        }else{
+            alert('O nome já foi cadastrado.')
+        }
     };
 
     const removeClient = (clientName) => {
@@ -55,6 +62,7 @@ export default function GlobaState({ children }) {
 
     const data = {
         clientList, 
+        addClient,
         removeClient, 
         clientHandler, 
         newClient, 

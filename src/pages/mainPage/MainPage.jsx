@@ -1,28 +1,27 @@
-import ClientCard from "./components/clientCard/ClientCard"
+import { useNavigate } from "react-router";
+import ClientCard from "../../components/clientCard/ClientCard";
 import { GlobalContext } from "../../components/contexts/GlobalContext"
 import { useContext } from "react"
+import { goToAddValuePage } from "../../routes/coordinator";
 
 function MainPage() {
 
     const context = useContext(GlobalContext);
+    const navigate = useNavigate();
 
-    const {clientList, removeClient, clientHandler, newClient} = context;
+    const {clientList, addClient, removeClient, clientHandler, newClient} = context;
+
+    const redirectUser = () => {
+        if(clientList.length > 0){
+            goToAddValuePage(navigate)
+        }else{
+            alert('Você precisa criar uma mesa primeiro')
+        }
+    }
 
     return(
         <>
 
-
-          {/*   <AddValueModal
-                openModal={openModal}
-                setOpenModal={() => setOpenModal(!openModal)}
-                clientList={clientList}
-                newFood={newFood}
-                foodHandler={foodHandler}
-                newValue={newValue}
-                valueHandler={valueHandler}
-                addOrder={addOrder}
-
-            /> */}
             <h1>Quem faz parte da mesa?</h1>
             <form onSubmit={addClient}>
                 <input
@@ -43,21 +42,21 @@ function MainPage() {
             </form>
 
             <button
-                
+                onClick={() => redirectUser()}
                
             >Adicione um valor para ser divido</button> {/* this button calls a modal to add the value to be divided */}
 
           
         
             {clientList.map((client, index) => {
-            return(
-                <ClientCard
-                    client={client}
-                    key={index}
-                    index={index}
-                    removeClient={removeClient}
-                />
-            )
+                return(
+                    <ClientCard
+                        client={client}
+                        key={index}
+                        index={index}
+                        removeClient={removeClient}
+                    />
+                )
             })}
         </>
     )
