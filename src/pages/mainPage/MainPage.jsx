@@ -25,16 +25,16 @@ function MainPage() {
             <h1>Quem faz parte da mesa?</h1>
             <form onSubmit={addClient}>
                 <input
-                id="name"
-                name="name"
-                placeholder="Nome"
-                type="text"
-                value={newClient} 
-                onChange={clientHandler}
+                    id="name"
+                    name="name"
+                    placeholder="Nome"
+                    type="text"
+                    value={newClient} 
+                    onChange={clientHandler}
                 />
         
                 <button
-                type="submit"
+                    type="submit"
                 >
                 Adicionar
                 </button>

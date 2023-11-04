@@ -36,11 +36,9 @@ export const AddValuePage = () => {
                             />
                         </label>
 
-                       
                             Dividir entre quem?
 
-                          
-                                {clientList.map((client, index) =>{
+                            {clientList.map((client, index) =>{
                                     return(
                                         <ClientCheckInput
                                             key={index}
