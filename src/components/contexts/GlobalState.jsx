@@ -14,6 +14,7 @@ export default function GlobaState({ children }) {
     const clientHandler = (e) => {
         setNewClient(e.target.value)
     };
+
    
     const addClient =  (e) => {
         e.preventDefault()
