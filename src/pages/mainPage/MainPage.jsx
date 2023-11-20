@@ -36,7 +36,7 @@ function MainPage() {
                 <button
                     type="submit"
                 >
-                Adicionar
+                    Adicionar
                 </button>
 
             </form>
@@ -44,14 +44,13 @@ function MainPage() {
             <button
                 onClick={() => redirectUser()}
                
-            >Adicione um valor para ser divido</button> {/* this button calls a modal to add the value to be divided */}
+            >Adicione um valor para ser divido</button> 
 
-          
         
             {clientList.map((client, index) => {
                 return(
                     <ClientCard
-                        client={client}
+                        client={client.name}
                         key={index}
                         index={index}
                         removeClient={removeClient}
