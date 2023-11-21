@@ -83,7 +83,7 @@ export default function GlobaState({ children }) {
         if(checkSelectedClient === false) return alert('Selecione os clientes para dividir o valor.');
 
         const valueNumb = Number(newValue.replace(',', '.'));
-        const dividedValue = valueNumb/payingClients.length;
+        const dividedValue = Number((valueNumb/payingClients.length).toFixed(2));
 
         updateClientList(newFood, dividedValue)
        

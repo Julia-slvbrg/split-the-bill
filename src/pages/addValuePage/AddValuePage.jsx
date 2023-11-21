@@ -3,6 +3,7 @@ import ClientCheckInput from "../../components/clientCheckInput/clientCheckInput
 import { GlobalContext } from "../../components/contexts/GlobalContext"
 import { useContext, useEffect } from "react"
 import { goToMainPage } from "../../routes/coordinator";
+import ClientCard from "../../components/clientCard/ClientCard";
 
 export const AddValuePage = () => {
 
@@ -18,10 +19,6 @@ export const AddValuePage = () => {
     
 
     const handleOnChange = (position) => {
-       /*  const updatedCheckedState = checkedState.map((item, index) =>
-            index === position? !item : item
-        ); */
-
         const updatedCheckedState = checkedState.map((item, index) =>{
             if(index === position){
                 if(item == false){
@@ -30,11 +27,11 @@ export const AddValuePage = () => {
                 }else{
                     const updatePayignClient = payingClients.filter(client => client !== clientList[position]);
                     setPayingClients(updatePayignClient);
-                }
+                };
                 
-                return !item
+                return !item;
             }else{
-                return item
+                return item;
             }
         });
 
@@ -80,7 +77,7 @@ export const AddValuePage = () => {
                
                     Dividir entre quem?
 
-                    {clientList.map((client, index) =>{
+                    {clientList.map((client, index) => {
                         return(
                             <ClientCheckInput
                                 key={index}
@@ -100,6 +97,17 @@ export const AddValuePage = () => {
                 </button>
                     
             </form>
+
+            {clientList.map((client, index) => {
+                return(
+                    <ClientCard
+                        key={index}
+                        index={index}
+                        client={client.name}
+                        value={client.value}
+                    />
+                )
+            })}
 
             
                 
