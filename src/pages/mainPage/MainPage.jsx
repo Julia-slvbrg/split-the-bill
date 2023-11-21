@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import ClientCard from "../../components/clientCard/ClientCard";
 import { GlobalContext } from "../../components/contexts/GlobalContext"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { goToAddValuePage } from "../../routes/coordinator";
 
 function MainPage() {
@@ -17,7 +17,7 @@ function MainPage() {
         }else{
             alert('Você precisa criar uma mesa primeiro')
         }
-    }
+    };
 
     return(
         <>
@@ -45,7 +45,6 @@ function MainPage() {
                 onClick={() => redirectUser()}
                
             >Adicione um valor para ser divido</button> 
-
         
             {clientList.map((client, index) => {
                 return(

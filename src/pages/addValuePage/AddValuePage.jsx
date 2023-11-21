@@ -1,25 +1,20 @@
 import { useNavigate } from "react-router";
 import ClientCheckInput from "../../components/clientCheckInput/clientCheckInput";
 import { GlobalContext } from "../../components/contexts/GlobalContext"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
+import { goToMainPage } from "../../routes/coordinator";
 
 export const AddValuePage = () => {
 
     const context = useContext(GlobalContext);
     const navigate = useNavigate();
 
-
-
-    const {clientList, newFood, foodHandler, newValue, valueHandler, addOrder,
-        payingClient,
-        setPayingClient,
-        checkedState, 
-        setCheckedState,
-    } = context;
+    const {clientList, newFood, foodHandler, newValue, valueHandler, addOrder, payingClients, setPayingClients, checkedState, setCheckedState, reset} = context;
 
     useEffect(()=> {
         setCheckedState(new Array(clientList.length).fill(false));
-    }, [])
+        setPayingClients([]);
+    }, [reset]);
     
 
     const handleOnChange = (position) => {
@@ -30,11 +25,11 @@ export const AddValuePage = () => {
         const updatedCheckedState = checkedState.map((item, index) =>{
             if(index === position){
                 if(item == false){
-                    setPayingClient([...payingClient, clientList[position]]);
+                    setPayingClients([...payingClients, clientList[position]]);
                     console.log(clientList[position]);
                 }else{
-                    const updatePayignClient = payingClient.filter(client => client !== clientList[position]);
-                    setPayingClient(updatePayignClient);
+                    const updatePayignClient = payingClients.filter(client => client !== clientList[position]);
+                    setPayingClients(updatePayignClient);
                 }
                 
                 return !item
@@ -44,16 +39,19 @@ export const AddValuePage = () => {
         });
 
         setCheckedState(updatedCheckedState)  
-        console.log(updatedCheckedState);         
-    }
+    };
+
+    const redefineTable = () => {
+        goToMainPage(navigate);
+        window.location.reload(false);
+    };
 
     
-   console.log(payingClient);
     return(
         <>
             <div>
 
-                <button onClick={() => navigate(-1)}>Voltar</button>
+                <button onClick={() => redefineTable()}>Redefinir os cliente da mesa</button>
                     
             <form onSubmit={addOrder}>
                 <label htmlFor="food">
@@ -87,7 +85,7 @@ export const AddValuePage = () => {
                             <ClientCheckInput
                                 key={index}
                                 index={index}
-                                client={client}
+                                client={client.name}
                                 checkedState={checkedState[index]} 
                                 setCheckedState={setCheckedState}
                                 handleOnChange={handleOnChange}

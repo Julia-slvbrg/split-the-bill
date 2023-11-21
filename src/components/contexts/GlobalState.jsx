@@ -7,11 +7,9 @@ export default function GlobaState({ children }) {
     const [newClient, setNewClient] = useState('');
     const [newFood, setNewFood] = useState('');
     const [newValue, setNewValue] = useState('');
-    const [payingClient, setPayingClient] = useState([]);
-    const [newOrderObj, setNewOrderObj] = useState([]);
-
-
+    const [payingClients, setPayingClients] = useState([]);
     const [checkedState, setCheckedState] = useState([]);
+    const [reset, setReset] = useState(false);
 
 
     const clientHandler = (e) => {
@@ -39,8 +37,6 @@ export default function GlobaState({ children }) {
         }
     };
 
-    //console.log(clientListObj);
-
     const removeClient = (clientName) => {
 
         const newList = clientList.filter((client) => client.name !== clientName);
@@ -56,30 +52,48 @@ export default function GlobaState({ children }) {
         setNewValue(e.target.value)
     };
 
+    const updateClientList = (newFood, dividedValue) => {
+        setClientList(prevClientList => {
+            const updatedClients = prevClientList.map(client => {
+                
+                const payingClient = payingClients.find(payingClient => payingClient.name === client.name);
+
+                if(payingClient){
+                    return{
+                        ...client,
+                        food: [...client.food, newFood],
+                        value: [...client.value, dividedValue]
+                    }
+                };
+
+                return client;
+            });
+
+            return updatedClients;
+        })
+    };
+
     const addOrder = (e) => {
         e.preventDefault();
 
+        const checkSelectedClient = checkedState.includes(true);
+
         if(newValue === '' || newValue === ' ') return alert('O valor não pode ser vazio.');
 
+        if(checkSelectedClient === false) return alert('Selecione os clientes para dividir o valor.');
+
         const valueNumb = Number(newValue.replace(',', '.'));
-        const dividedValue = valueNumb/payingClient.length;
+        const dividedValue = valueNumb/payingClients.length;
 
-
-        setNewOrderObj(
-            [
-                ...newOrderObj,
-                {
-                    food: newFood,
-                    value: dividedValue
-                }
-            ]
-        );
-        
+        updateClientList(newFood, dividedValue)
+       
         setNewValue('');
         setNewFood('');
+
+        setReset(!reset) 
     };
 
-    //console.log(newOrderObj);
+    console.log(clientList);
 
     const data = {
         clientList, 
@@ -92,12 +106,11 @@ export default function GlobaState({ children }) {
         newValue, 
         valueHandler, 
         addOrder,
-
-        payingClient,
-        setPayingClient,
-
+        payingClients,
+        setPayingClients,
         checkedState, 
         setCheckedState,
+        reset
     }
 
     return(

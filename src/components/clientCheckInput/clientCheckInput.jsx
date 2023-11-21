@@ -1,6 +1,4 @@
-export const ClientCheckInput = ({ client, index, 
-    checkedState,
-    handleOnChange }) => {
+export const ClientCheckInput = ({ client, index, checkedState, handleOnChange }) => {
     return(
        
         <label>
