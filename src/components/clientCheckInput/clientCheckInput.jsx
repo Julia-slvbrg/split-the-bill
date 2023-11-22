@@ -1,16 +1,16 @@
-export const ClientCheckInput = ({ client, index, checkedState, handleOnChange }) => {
+export const ClientCheckInput = ({ name, index, checkedState, handleOnChange }) => {
     return(
        
         <label>
             <input
                 type="checkbox"
                 id={`custom-checkbox-${index}`}
-                name={client}
-                value={client}
+                name={name}
+                value={name}
                 checked={checkedState || false}
                 onChange={() => handleOnChange(index)}
             />
-            {client}
+            {name}
         </label>
     )
 }

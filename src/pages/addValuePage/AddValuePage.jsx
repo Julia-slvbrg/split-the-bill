@@ -4,19 +4,22 @@ import { GlobalContext } from "../../components/contexts/GlobalContext"
 import { useContext, useEffect } from "react"
 import { goToMainPage } from "../../routes/coordinator";
 import ClientCard from "../../components/clientCard/ClientCard";
+import ServiceTaxModal from "../../components/modal/ServiceTaxModal";
 
 export const AddValuePage = () => {
 
     const context = useContext(GlobalContext);
     const navigate = useNavigate();
 
-    const {clientList, newFood, foodHandler, newValue, valueHandler, addOrder, payingClients, setPayingClients, checkedState, setCheckedState, reset} = context;
+    const {clientList, newFood, foodHandler, newValue, valueHandler, addOrder, payingClients, setPayingClients, checkedState, setCheckedState, reset,
+    
+        openModal, setOpenModal
+    } = context;
 
     useEffect(()=> {
         setCheckedState(new Array(clientList.length).fill(false));
         setPayingClients([]);
     }, [reset]);
-    
 
     const handleOnChange = (position) => {
         const updatedCheckedState = checkedState.map((item, index) =>{
@@ -43,10 +46,11 @@ export const AddValuePage = () => {
         window.location.reload(false);
     };
 
+   
     
     return(
         <>
-            <div>
+            
 
                 <button onClick={() => redefineTable()}>Redefinir os cliente da mesa</button>
                     
@@ -82,7 +86,7 @@ export const AddValuePage = () => {
                             <ClientCheckInput
                                 key={index}
                                 index={index}
-                                client={client.name}
+                                name={client.name}
                                 checkedState={checkedState[index]} 
                                 setCheckedState={setCheckedState}
                                 handleOnChange={handleOnChange}
@@ -103,15 +107,24 @@ export const AddValuePage = () => {
                     <ClientCard
                         key={index}
                         index={index}
-                        client={client.name}
-                        value={client.value}
+                        name={client.name}
+                        totalAmount={client.total}
                     />
                 )
             })}
+ 
+           <>
+            <ServiceTaxModal
+                    openModal={openModal}
+                    setOpenModal={() => setOpenModal(!openModal)}
+                />
 
+                <button
+                    onClick={() => setOpenModal(true)}
+                >Fechar conta</button>
+           
+           </>
             
-                
-            </div>
                 
         </>
     )

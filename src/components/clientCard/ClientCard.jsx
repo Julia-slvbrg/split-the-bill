@@ -1,30 +1,34 @@
-import { useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom";
 
-export const ClientCard = ({ client, value, index, removeClient }) => {
+
+export const ClientCard = ({ name, totalAmount, index, removeClient }) => {
     const location = useLocation();
 
-    console.log(value);
-    
-    let sumValue = 0;
-
-    value && value.length > 0? sumValue = value.reduce((sum, currentValue) => sum + currentValue) : null;
-    
-    let total = sumValue.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    let parcialDivision = 0;
+    if(totalAmount == undefined){ 
+        totalAmount = 0
+    }else{
+        parcialDivision = totalAmount.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+        });
+    };
+ 
 
     const chooseCard = () => {
         if(location.pathname === '/'){
             return(
-                <>
-                    <p>{index + 1} - {client}</p> 
-                    <button onClick={() => removeClient(client)}> - </button>
-                </>
+                <div >
+                    <p>{index + 1} - {name}</p> 
+                    <button onClick={() => removeClient(name)}> - </button>
+                </div>
             )
         }else if(location.pathname === '/addValues'){
             return(
-                <>
-                    <p>{index + 1} - {client}</p> 
-                    <p>{total}</p>
-                </>
+                <div>
+                    <p>{index + 1} - {name}</p> 
+                    <p>{parcialDivision}</p>
+                </div>
             )
         }
     }
@@ -33,7 +37,6 @@ export const ClientCard = ({ client, value, index, removeClient }) => {
         <>
             {chooseCard()}
         </>
-        
     )
 }
 

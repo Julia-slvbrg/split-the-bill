@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { GlobalContext } from "./GlobalContext";
 
 export default function GlobaState({ children }) {
@@ -10,6 +10,7 @@ export default function GlobaState({ children }) {
     const [payingClients, setPayingClients] = useState([]);
     const [checkedState, setCheckedState] = useState([]);
     const [reset, setReset] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
 
 
     const clientHandler = (e) => {
@@ -28,7 +29,8 @@ export default function GlobaState({ children }) {
                 {
                     name: newClient,
                     food: [],
-                    value: []
+                    value: [],
+                    total: 0
                 }
             ]);
             setNewClient('');
@@ -73,27 +75,43 @@ export default function GlobaState({ children }) {
         })
     };
 
+    const getTotalValue = () => {
+        setClientList(prevClientList => {
+            const updateTotal = prevClientList.map(client => {
+                let sumValue = 0;
+                
+                if(client.value.length > 0){ 
+                    sumValue = client.value.reduce((sum, currentValue) => sum + currentValue);
+                    
+                    return{
+                        ...client,
+                        total: sumValue
+                    }
+                };
+
+                return client;
+            });
+            return updateTotal;
+        })
+    };
+
     const addOrder = (e) => {
         e.preventDefault();
 
         const checkSelectedClient = checkedState.includes(true);
 
         if(newValue === '' || newValue === ' ') return alert('O valor não pode ser vazio.');
-
         if(checkSelectedClient === false) return alert('Selecione os clientes para dividir o valor.');
 
         const valueNumb = Number(newValue.replace(',', '.'));
         const dividedValue = Number((valueNumb/payingClients.length).toFixed(2));
 
-        updateClientList(newFood, dividedValue)
-       
+        updateClientList(newFood, dividedValue);
+        getTotalValue();
         setNewValue('');
         setNewFood('');
-
         setReset(!reset) 
     };
-
-    console.log(clientList);
 
     const data = {
         clientList, 
@@ -110,8 +128,14 @@ export default function GlobaState({ children }) {
         setPayingClients,
         checkedState, 
         setCheckedState,
-        reset
-    }
+        reset,
+
+
+        openModal, setOpenModal
+    };
+
+    console.log({clientList});
+    
 
     return(
         <GlobalContext.Provider value={data}>
