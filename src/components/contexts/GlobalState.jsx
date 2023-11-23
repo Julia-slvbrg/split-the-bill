@@ -113,6 +113,21 @@ export default function GlobaState({ children }) {
         setReset(!reset) 
     };
 
+    const addServiceTax = (serviceTax) => {
+        setClientList(prevClientList => {
+            const updatedTotal = prevClientList.map(client => {
+                const newTotal = client.total * serviceTax
+
+                return{
+                    ...client,
+                    total: newTotal
+                };
+            });
+            
+            return updatedTotal
+        })
+    };
+
     const data = {
         clientList, 
         addClient,
@@ -131,7 +146,8 @@ export default function GlobaState({ children }) {
         reset,
 
 
-        openModal, setOpenModal
+        openModal, setOpenModal,
+        addServiceTax
     };
 
     console.log({clientList});

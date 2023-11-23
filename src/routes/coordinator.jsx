@@ -3,4 +3,7 @@ export const goToMainPage = (navigate) => {
 };
 export const goToAddValuePage = (navigate) => {
     navigate('/addValues')
+};
+export const goToFinalValuePage = (navigate) => {
+    navigate('/finalValue')
 }

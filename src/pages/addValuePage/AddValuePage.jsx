@@ -13,7 +13,7 @@ export const AddValuePage = () => {
 
     const {clientList, newFood, foodHandler, newValue, valueHandler, addOrder, payingClients, setPayingClients, checkedState, setCheckedState, reset,
     
-        openModal, setOpenModal
+        openModal, setOpenModal, addServiceTax
     } = context;
 
     useEffect(()=> {
@@ -46,8 +46,6 @@ export const AddValuePage = () => {
         window.location.reload(false);
     };
 
-   
-    
     return(
         <>
             
@@ -114,9 +112,11 @@ export const AddValuePage = () => {
             })}
  
            <>
-            <ServiceTaxModal
+                <ServiceTaxModal
                     openModal={openModal}
                     setOpenModal={() => setOpenModal(!openModal)}
+                    addServiceTax={addServiceTax}
+
                 />
 
                 <button
