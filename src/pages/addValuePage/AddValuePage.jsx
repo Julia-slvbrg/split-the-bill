@@ -7,14 +7,10 @@ import ClientCard from "../../components/clientCard/ClientCard";
 import ServiceTaxModal from "../../components/modal/ServiceTaxModal";
 
 export const AddValuePage = () => {
-
     const context = useContext(GlobalContext);
     const navigate = useNavigate();
 
-    const {clientList, newFood, foodHandler, newValue, valueHandler, addOrder, payingClients, setPayingClients, checkedState, setCheckedState, reset,
-    
-        openModal, setOpenModal, addServiceTax
-    } = context;
+    const {clientList, newFood, foodHandler, newValue, valueHandler, addOrder, payingClients, setPayingClients, checkedState, setCheckedState, reset, openModal, setOpenModal, addServiceTax} = context;
 
     useEffect(()=> {
         setCheckedState(new Array(clientList.length).fill(false));
@@ -41,7 +37,7 @@ export const AddValuePage = () => {
         setCheckedState(updatedCheckedState)  
     };
 
-    const redefineTable = () => {
+    const resetTable = () => {
         goToMainPage(navigate);
         window.location.reload(false);
     };
@@ -49,8 +45,7 @@ export const AddValuePage = () => {
     return(
         <>
             
-
-                <button onClick={() => redefineTable()}>Redefinir os cliente da mesa</button>
+            <button onClick={() => resetTable()}>Redefinir os cliente da mesa</button>
                     
             <form onSubmit={addOrder}>
                 <label htmlFor="food">
@@ -122,10 +117,7 @@ export const AddValuePage = () => {
                 <button
                     onClick={() => setOpenModal(true)}
                 >Fechar conta</button>
-           
            </>
-            
-                
         </>
     )
 }

@@ -5,7 +5,6 @@ import { goToFinalValuePage } from "../../routes/coordinator";
 export const ServiceTaxModadal = ({ openModal, setOpenModal, addServiceTax }) => {
     const navigate = useNavigate();
 
-
     if(openModal){
         return(
             <Backkground >
@@ -19,7 +18,7 @@ export const ServiceTaxModadal = ({ openModal, setOpenModal, addServiceTax }) =>
                     <div>
                         <button 
                             onClick={() => {
-                                addServiceTax(.10)
+                                addServiceTax(1.1)
                                 goToFinalValuePage(navigate)
                             }}
                         >
@@ -27,7 +26,7 @@ export const ServiceTaxModadal = ({ openModal, setOpenModal, addServiceTax }) =>
                         </button>
                         <button 
                             onClick={() => {
-                                addServiceTax(.15)
+                                addServiceTax(1.15)
                                 goToFinalValuePage(navigate)
                             }}
                         >

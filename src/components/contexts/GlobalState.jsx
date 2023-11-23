@@ -144,14 +144,10 @@ export default function GlobaState({ children }) {
         checkedState, 
         setCheckedState,
         reset,
-
-
-        openModal, setOpenModal,
+        openModal, 
+        setOpenModal,
         addServiceTax
     };
-
-    console.log({clientList});
-    
 
     return(
         <GlobalContext.Provider value={data}>
