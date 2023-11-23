@@ -11,7 +11,8 @@ export const ClientCard = ({ name, totalAmount, index, removeClient }) => {
                     <p>{index + 1} - {name}</p> 
                     <button onClick={() => removeClient(name)}> - </button>
                 </div>
-            )
+            );
+
         }else if(location.pathname === '/addValues'){
             let parcialDivision = 0;
 
@@ -45,7 +46,7 @@ export const ClientCard = ({ name, totalAmount, index, removeClient }) => {
                 </div>
             )
         }
-    }
+    };
     
     return(
         <>
