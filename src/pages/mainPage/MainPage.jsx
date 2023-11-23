@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import ClientCard from "../../components/clientCard/ClientCard";
 import { GlobalContext } from "../../components/contexts/GlobalContext"
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { goToAddValuePage } from "../../routes/coordinator";
 
 function MainPage() {
@@ -49,7 +49,7 @@ function MainPage() {
             {clientList.map((client, index) => {
                 return(
                     <ClientCard
-                        client={client.name}
+                        name={client.name}
                         key={index}
                         index={index}
                         removeClient={removeClient}

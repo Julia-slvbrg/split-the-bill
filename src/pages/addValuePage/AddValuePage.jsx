@@ -3,25 +3,25 @@ import ClientCheckInput from "../../components/clientCheckInput/clientCheckInput
 import { GlobalContext } from "../../components/contexts/GlobalContext"
 import { useContext, useEffect } from "react"
 import { goToMainPage } from "../../routes/coordinator";
+import ClientCard from "../../components/clientCard/ClientCard";
+import ServiceTaxModal from "../../components/modal/ServiceTaxModal";
 
 export const AddValuePage = () => {
 
     const context = useContext(GlobalContext);
     const navigate = useNavigate();
 
-    const {clientList, newFood, foodHandler, newValue, valueHandler, addOrder, payingClients, setPayingClients, checkedState, setCheckedState, reset} = context;
+    const {clientList, newFood, foodHandler, newValue, valueHandler, addOrder, payingClients, setPayingClients, checkedState, setCheckedState, reset,
+    
+        openModal, setOpenModal, addServiceTax
+    } = context;
 
     useEffect(()=> {
         setCheckedState(new Array(clientList.length).fill(false));
         setPayingClients([]);
     }, [reset]);
-    
 
     const handleOnChange = (position) => {
-       /*  const updatedCheckedState = checkedState.map((item, index) =>
-            index === position? !item : item
-        ); */
-
         const updatedCheckedState = checkedState.map((item, index) =>{
             if(index === position){
                 if(item == false){
@@ -30,11 +30,11 @@ export const AddValuePage = () => {
                 }else{
                     const updatePayignClient = payingClients.filter(client => client !== clientList[position]);
                     setPayingClients(updatePayignClient);
-                }
+                };
                 
-                return !item
+                return !item;
             }else{
-                return item
+                return item;
             }
         });
 
@@ -46,10 +46,9 @@ export const AddValuePage = () => {
         window.location.reload(false);
     };
 
-    
     return(
         <>
-            <div>
+            
 
                 <button onClick={() => redefineTable()}>Redefinir os cliente da mesa</button>
                     
@@ -80,12 +79,12 @@ export const AddValuePage = () => {
                
                     Dividir entre quem?
 
-                    {clientList.map((client, index) =>{
+                    {clientList.map((client, index) => {
                         return(
                             <ClientCheckInput
                                 key={index}
                                 index={index}
-                                client={client.name}
+                                name={client.name}
                                 checkedState={checkedState[index]} 
                                 setCheckedState={setCheckedState}
                                 handleOnChange={handleOnChange}
@@ -101,9 +100,31 @@ export const AddValuePage = () => {
                     
             </form>
 
+            {clientList.map((client, index) => {
+                return(
+                    <ClientCard
+                        key={index}
+                        index={index}
+                        name={client.name}
+                        totalAmount={client.total}
+                    />
+                )
+            })}
+ 
+           <>
+                <ServiceTaxModal
+                    openModal={openModal}
+                    setOpenModal={() => setOpenModal(!openModal)}
+                    addServiceTax={addServiceTax}
+
+                />
+
+                <button
+                    onClick={() => setOpenModal(true)}
+                >Fechar conta</button>
+           
+           </>
             
-                
-            </div>
                 
         </>
     )
