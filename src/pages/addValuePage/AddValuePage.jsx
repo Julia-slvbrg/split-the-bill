@@ -10,7 +10,7 @@ export const AddValuePage = () => {
     const context = useContext(GlobalContext);
     const navigate = useNavigate();
 
-    const {clientList, newFood, foodHandler, newValue, valueHandler, addOrder, payingClients, setPayingClients, checkedState, setCheckedState, reset, openModal, setOpenModal, addServiceTax} = context;
+    const {clientList, newValue, valueHandler, addOrder, payingClients, setPayingClients, checkedState, setCheckedState, reset, openModal, setOpenModal, addServiceTax} = context;
 
     useEffect(()=> {
         setCheckedState(new Array(clientList.length).fill(false));
@@ -43,37 +43,27 @@ export const AddValuePage = () => {
     };
 
     return(
-        <>
-            
-            <button onClick={() => resetTable()}>Redefinir os cliente da mesa</button>
+        <>            
+            <button 
+                onClick={() => resetTable()}
+            >Redefinir os cliente da mesa</button>
                     
-            <form onSubmit={addOrder}>
-                <label htmlFor="food">
-                    O que foi pedido
-                    <p>*campo não obrigatório</p>
-                </label>
-                    <input
-                        id="food"
-                        name="food"
-                        type="text"
-                        value={newFood}
-                        onChange={foodHandler}
-                    />
-                
+            <form onSubmit={addOrder}>   
+                <section>
                 <label htmlFor="value">
-                    Valor a ser dividido (R$):
-                </label>
-                    <input
-                        id="value"
-                        name="value"
-                        type="text"
-                        value={newValue}
-                        onChange={valueHandler}
-                        required
-                    />
-               
-                    Dividir entre quem?
-
+                        Valor a ser dividido (R$):
+                    </label>
+                        <input
+                            id="value"
+                            name="value"
+                            type="text"
+                            value={newValue}
+                            onChange={valueHandler}
+                            required
+                        />
+                </section>           
+                Dividir entre quem?
+                <section>
                     {clientList.map((client, index) => {
                         return(
                             <ClientCheckInput
@@ -86,13 +76,13 @@ export const AddValuePage = () => {
                             />
                         )
                     })}
-                      
+                </section>
+                    
                 <button 
                     type="submit"
                 >
                     Adicionar valor
                 </button>
-                    
             </form>
 
             {clientList.map((client, index) => {
