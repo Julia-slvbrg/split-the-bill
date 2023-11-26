@@ -5,7 +5,6 @@ export default function GlobaState({ children }) {
 
     const [clientList, setClientList] = useState([]);
     const [newClient, setNewClient] = useState('');
-    const [newFood, setNewFood] = useState('');
     const [newValue, setNewValue] = useState('');
     const [payingClients, setPayingClients] = useState([]);
     const [checkedState, setCheckedState] = useState([]);
@@ -44,10 +43,6 @@ export default function GlobaState({ children }) {
         const newList = clientList.filter((client) => client.name !== clientName);
 
         return setClientList(newList);
-    };
-
-    const foodHandler = (e) => {
-        setNewFood(e.target.value)
     };
  
     const valueHandler = (e) => {
@@ -109,7 +104,6 @@ export default function GlobaState({ children }) {
         updateClientList(newFood, dividedValue);
         getTotalValue();
         setNewValue('');
-        setNewFood('');
         setReset(!reset) 
     };
 
@@ -134,8 +128,6 @@ export default function GlobaState({ children }) {
         removeClient, 
         clientHandler, 
         newClient, 
-        newFood, 
-        foodHandler, 
         newValue, 
         valueHandler, 
         addOrder,

@@ -3,6 +3,7 @@ import ClientCard from "../../components/clientCard/ClientCard";
 import { GlobalContext } from "../../components/contexts/GlobalContext"
 import { useContext } from "react"
 import { goToAddValuePage } from "../../routes/coordinator";
+import { Form, Title, Input, Wrapper, AddValueSection } from "./MainPageStyle";
 
 function MainPage() {
 
@@ -20,43 +21,49 @@ function MainPage() {
     };
 
     return(
-        <>
-
-            <h1>Quem faz parte da mesa?</h1>
-            <form onSubmit={addClient}>
-                <input
-                    id="name"
-                    name="name"
-                    placeholder="Nome"
-                    type="text"
-                    value={newClient} 
-                    onChange={clientHandler}
-                />
-        
-                <button
-                    type="submit"
-                >
-                    Adicionar
-                </button>
-
-            </form>
-
-            <button
-                onClick={() => redirectUser()}
-               
-            >Adicione um valor para ser divido</button> 
-        
-            {clientList.map((client, index) => {
-                return(
-                    <ClientCard
-                        name={client.name}
-                        key={index}
-                        index={index}
-                        removeClient={removeClient}
+        <Wrapper>
+            <section>
+                <Title>Quem faz parte da mesa?</Title>
+                <Form onSubmit={addClient}>
+                    <Input
+                        id="name"
+                        name="name"
+                        placeholder="Nome"
+                        type="text"
+                        value={newClient} 
+                        onChange={clientHandler}
                     />
-                )
-            })}
-        </>
+            
+                    <button
+                        type="submit"
+                    >
+                        Adicionar
+                    </button>
+                </Form>
+            </section>
+            
+            <AddValueSection>
+                <button
+                    className="addValueBtn"
+                    onClick={() => redirectUser()}
+                
+                >Adicione um valor para ser divido</button> 
+            </AddValueSection>
+            
+            <section>
+                {clientList.map((client, index) => {
+                    return(
+                        <ClientCard
+                            name={client.name}
+                            key={index}
+                            index={index}
+                            removeClient={removeClient}
+                        />
+                    )
+                })}
+            </section>
+            
+        </Wrapper>
     )
 }
 

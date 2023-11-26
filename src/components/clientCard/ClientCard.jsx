@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { CardBtnSection, CardValueSection } from "./ClientCardStyle";
 
 
 export const ClientCard = ({ name, totalAmount, index, removeClient }) => {
@@ -6,11 +7,19 @@ export const ClientCard = ({ name, totalAmount, index, removeClient }) => {
 
     const chooseCard = () => {
         if(location.pathname === '/'){
+
             return(
-                <div >
+                <CardBtnSection>
                     <p>{index + 1} - {name}</p> 
-                    <button onClick={() => removeClient(name)}> - </button>
-                </div>
+                    <button 
+                        className="removeClientBtn"
+                        onClick={() => removeClient(name)}
+                    >
+                        <span className="material-symbols-outlined">
+                            remove
+                        </span>
+                    </button>
+                </CardBtnSection>
             );
 
         }else if(location.pathname === '/addValues'){
@@ -26,14 +35,13 @@ export const ClientCard = ({ name, totalAmount, index, removeClient }) => {
             }; 
 
             return(
-                <div>
+                <CardValueSection>
                     <p>{index + 1} - {name}</p> 
                     <p>{parcialDivision}</p>
-                </div>
+                </CardValueSection>
             );
 
         }else{
-
             const amountToPay = totalAmount.toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL'
