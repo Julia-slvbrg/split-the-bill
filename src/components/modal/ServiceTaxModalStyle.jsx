@@ -7,7 +7,7 @@ export const Backkground = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(56, 58, 58, 0.7); //ajeitar isso depois
+    background: rgba(56, 58, 58, 0.7); 
     z-index: 1000;
 `
 export const Wrapper = styled.div`

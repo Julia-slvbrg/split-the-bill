@@ -36,8 +36,8 @@ export const ClientCard = ({ name, totalAmount, index, removeClient }) => {
 
             return(
                 <CardValueSection>
-                    <p>{index + 1} - {name}</p> 
-                    <p>{parcialDivision}</p>
+                    <p className="clientName">{index + 1} - {name}</p> 
+                    <p className='value'>{parcialDivision}</p>
                 </CardValueSection>
             );
 

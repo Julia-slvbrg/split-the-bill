@@ -24,5 +24,11 @@ export const CardBtnSection = styled.section`
     }
 `
 export const CardValueSection = styled.section`
+    .clientName{
+        margin-bottom: -1em;
+    }
+    .value{
+        margin-left: .6em;
+    }
 `
 
