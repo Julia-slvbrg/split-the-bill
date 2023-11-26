@@ -20,11 +20,7 @@ export const Wrapper = styled.div`
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
-    .billingBtn{
-        margin-top: 1em;
-        width: 10em;
-        height: 2em;
-    }
+    
 `
 export const Input = styled.input`
     margin: 1.5em 0 1em .8em;
@@ -41,12 +37,17 @@ export const CheckSection = styled.section`
     align-items: center;
     row-gap: .3em;
 `
-export const BtnSection = styled.article`
+export const BtnSection = styled.section`
     display: flex;
     flex-direction: row;
     gap: 2em;
     justify-content: start;
     margin-top:.5em;
+    .billingBtn{
+        margin-top: 1em;
+        width: 10em;
+        height: 2em;
+    }
 `
 export const Division = styled.div`
     margin: 1em 0;

@@ -78,9 +78,10 @@ export const AddValuePage = () => {
                             />
                         )
                     })}
-                </CheckSection>
-               
-                <BtnSection>
+                </CheckSection>   
+            </Form>
+
+            <BtnSection>
                     <button 
                         className="billingBtn"
                         type="submit"
@@ -100,8 +101,6 @@ export const AddValuePage = () => {
                     >Fechar conta</button>
                 </BtnSection>
                 
-            </Form>
-
             <Division></Division>
 
             {clientList.map((client, index) => {
