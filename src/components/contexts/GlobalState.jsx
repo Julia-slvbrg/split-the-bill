@@ -49,7 +49,7 @@ export default function GlobaState({ children }) {
         setNewValue(e.target.value)
     };
 
-    const updateClientList = (newFood, dividedValue) => {
+    const updateClientList = (dividedValue) => {
         setClientList(prevClientList => {
             const updatedClients = prevClientList.map(client => {
                 
@@ -58,7 +58,6 @@ export default function GlobaState({ children }) {
                 if(payingClient){
                     return{
                         ...client,
-                        food: [...client.food, newFood],
                         value: [...client.value, dividedValue]
                     }
                 };
@@ -101,7 +100,7 @@ export default function GlobaState({ children }) {
         const valueNumb = Number(newValue.replace(',', '.'));
         const dividedValue = Number((valueNumb/payingClients.length).toFixed(2));
 
-        updateClientList(newFood, dividedValue);
+        updateClientList(dividedValue);
         getTotalValue();
         setNewValue('');
         setReset(!reset) 

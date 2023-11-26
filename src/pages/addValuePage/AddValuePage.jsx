@@ -5,6 +5,7 @@ import { useContext, useEffect } from "react"
 import { goToMainPage } from "../../routes/coordinator";
 import ClientCard from "../../components/clientCard/ClientCard";
 import ServiceTaxModal from "../../components/modal/ServiceTaxModal";
+import { Wrapper, Form, Input, CheckSection, Division, BtnSection } from "./AddValuePageStyle";
 
 export const AddValuePage = () => {
     const context = useContext(GlobalContext);
@@ -43,17 +44,18 @@ export const AddValuePage = () => {
     };
 
     return(
-        <>            
+        <Wrapper>            
             <button 
+                className="resetTableBtn"
                 onClick={() => resetTable()}
             >Redefinir os cliente da mesa</button>
                     
-            <form onSubmit={addOrder}>   
+            <Form onSubmit={addOrder}>   
                 <section>
                 <label htmlFor="value">
                         Valor a ser dividido (R$):
                     </label>
-                        <input
+                        <Input
                             id="value"
                             name="value"
                             type="text"
@@ -63,7 +65,7 @@ export const AddValuePage = () => {
                         />
                 </section>           
                 Dividir entre quem?
-                <section>
+                <CheckSection>
                     {clientList.map((client, index) => {
                         return(
                             <ClientCheckInput
@@ -76,14 +78,31 @@ export const AddValuePage = () => {
                             />
                         )
                     })}
-                </section>
-                    
-                <button 
-                    type="submit"
-                >
-                    Adicionar valor
-                </button>
-            </form>
+                </CheckSection>
+               
+                <BtnSection>
+                    <button 
+                        className="billingBtn"
+                        type="submit"
+                    >
+                        Adicionar valor
+                    </button>
+
+                    <ServiceTaxModal
+                        openModal={openModal}
+                        setOpenModal={() => setOpenModal(!openModal)}
+                        addServiceTax={addServiceTax}
+                    />
+
+                    <button
+                        className="billingBtn"
+                        onClick={() => setOpenModal(true)}
+                    >Fechar conta</button>
+                </BtnSection>
+                
+            </Form>
+
+            <Division></Division>
 
             {clientList.map((client, index) => {
                 return(
@@ -95,20 +114,7 @@ export const AddValuePage = () => {
                     />
                 )
             })}
- 
-           <>
-                <ServiceTaxModal
-                    openModal={openModal}
-                    setOpenModal={() => setOpenModal(!openModal)}
-                    addServiceTax={addServiceTax}
-
-                />
-
-                <button
-                    onClick={() => setOpenModal(true)}
-                >Fechar conta</button>
-           </>
-        </>
+        </Wrapper>
     )
 }
 

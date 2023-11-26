@@ -41,3 +41,8 @@ export const AddValueSection = styled.section`
         width: 18em;
     }
 `
+export const Division = styled.div`
+    background-color:  #d3cfe2ae;
+    width: 20em;
+    height: .06em;
+`
