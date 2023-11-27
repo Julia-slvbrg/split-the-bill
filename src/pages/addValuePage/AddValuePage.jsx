@@ -5,7 +5,7 @@ import { useContext, useEffect } from "react"
 import { goToMainPage } from "../../routes/coordinator";
 import ClientCard from "../../components/clientCard/ClientCard";
 import ServiceTaxModal from "../../components/modal/ServiceTaxModal";
-import { Wrapper, Form, Input, CheckSection, Division, BtnSection } from "./AddValuePageStyle";
+import { Wrapper, Form, Input, CheckSection, Division } from "./AddValuePageStyle";
 
 export const AddValuePage = () => {
     const context = useContext(GlobalContext);
@@ -79,15 +79,18 @@ export const AddValuePage = () => {
                         )
                     })}
                 </CheckSection>   
-            </Form>
 
-            <BtnSection>
-                    <button 
-                        className="billingBtn"
-                        type="submit"
-                    >
+                <button
+
+                    className="addValueBtn"
+                    type="submit"
+                >
                         Adicionar valor
                     </button>
+            </Form>
+
+            <>
+                    
 
                     <ServiceTaxModal
                         openModal={openModal}
@@ -96,11 +99,11 @@ export const AddValuePage = () => {
                     />
 
                     <button
-                        className="billingBtn"
+                        className="closeCheckgBtn"
                         onClick={() => setOpenModal(true)}
                     >Fechar conta</button>
-                </BtnSection>
-                
+                </>
+
             <Division></Division>
 
             {clientList.map((client, index) => {

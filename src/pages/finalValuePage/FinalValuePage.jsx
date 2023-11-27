@@ -3,6 +3,7 @@ import ClientCard from "../../components/clientCard/ClientCard";
 import { GlobalContext } from "../../components/contexts/GlobalContext";
 import { goToMainPage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
+import { ResetTableBtn, Title, Wrapper } from "./FinalValuePageStyle";
 
 function FinalValuePage() {
     const context = useContext(GlobalContext);
@@ -16,8 +17,8 @@ function FinalValuePage() {
     };
 
     return(
-        <>
-            <h1>Os valores que cada um deve pagar são:</h1>
+        <Wrapper>
+            <Title>Os valores que cada um deve pagar são:</Title>
             {clientList.map((client, index) => {
                 return(
                     <ClientCard
@@ -29,8 +30,10 @@ function FinalValuePage() {
                 )
             })}
 
-            <button onClick={() => resetTable()}>Montar nova mesa</button>
-        </>
+            <ResetTableBtn 
+                onClick={() => resetTable()}
+            >Montar nova mesa</ResetTableBtn>
+        </Wrapper>
     )
 }
 

@@ -1,4 +1,4 @@
-import { Backkground, Wrapper } from "./ServiceTaxModalStyle"
+import { Backkground, ContentContainer, Heading, Wrapper, CloseBtn, CloseBtnSection, TaxBtnSection } from "./ServiceTaxModalStyle"
 import { useNavigate } from "react-router-dom"
 import { goToFinalValuePage } from "../../routes/coordinator";
 
@@ -9,13 +9,44 @@ export const ServiceTaxModadal = ({ openModal, setOpenModal, addServiceTax }) =>
         return(
             <Backkground >
                 <Wrapper>
-                    <button 
-                        onClick={setOpenModal}
-                    >
-                        X
-                    </button>
-                    <h1>Qual é a taxa de serviço?</h1>
-                    <div>
+                    <ContentContainer>
+
+                        <CloseBtnSection>
+                            <CloseBtn 
+                                onClick={setOpenModal}
+                            >
+                                <span class="material-symbols-outlined">
+                                    close
+                                </span>
+                            
+                            </CloseBtn>
+                        </CloseBtnSection>
+                        
+                        <Heading>Qual é a taxa de serviço?</Heading>
+
+                        <TaxBtnSection>
+                            <button 
+                                onClick={() => {
+                                    addServiceTax(1.1)
+                                    goToFinalValuePage(navigate)
+                                }}
+                            >
+                                10%
+                            </button>
+                            <button 
+                                onClick={() => {
+                                    addServiceTax(1.15)
+                                    goToFinalValuePage(navigate)
+                                }}
+                            >
+                                15%
+                            </button>
+                        </TaxBtnSection>
+
+
+
+                    </ContentContainer>
+                    {/* <div>
                         <button 
                             onClick={() => {
                                 addServiceTax(1.1)
@@ -32,7 +63,7 @@ export const ServiceTaxModadal = ({ openModal, setOpenModal, addServiceTax }) =>
                         >
                             15%
                         </button>
-                    </div>
+                    </div> */}
                     
                 </Wrapper>
             </Backkground>
