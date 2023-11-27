@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    padding: .5em;
+    padding: 1em;
 `
 export const Title = styled.h1`
-    font-size: 1.8em;
+    font-size: 1.6em;
     line-height: 1.1;
     margin-bottom: 1em;
 `

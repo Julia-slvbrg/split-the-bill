@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+export const MainPageContainer = styled.div`
+    padding: -22em;
+`
 export const Wrapper = styled.div`
     padding: 2em;
 
@@ -15,7 +18,7 @@ export const Wrapper = styled.div`
     }
 `
 export const Title = styled.h1`
-    font-size: 2em;
+    font-size: 1.6em;
     line-height: 1.1;
 `
 export const Form = styled.form`

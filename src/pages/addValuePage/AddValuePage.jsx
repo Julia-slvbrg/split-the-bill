@@ -6,6 +6,7 @@ import { goToMainPage } from "../../routes/coordinator";
 import ClientCard from "../../components/clientCard/ClientCard";
 import ServiceTaxModal from "../../components/modal/ServiceTaxModal";
 import { Wrapper, Form, Input, CheckSection, Division } from "./AddValuePageStyle";
+import { Header } from "../../components/header/Header";
 
 export const AddValuePage = () => {
     const context = useContext(GlobalContext);
@@ -44,54 +45,54 @@ export const AddValuePage = () => {
     };
 
     return(
-        <Wrapper>            
-            <button 
-                className="resetTableBtn"
-                onClick={() => resetTable()}
-            >Redefinir os cliente da mesa</button>
-                    
-            <Form onSubmit={addOrder}>   
-                <section>
-                <label htmlFor="value">
-                        Valor a ser dividido (R$):
-                    </label>
-                        <Input
-                            id="value"
-                            name="value"
-                            type="text"
-                            value={newValue}
-                            onChange={valueHandler}
-                            required
-                        />
-                </section>           
-                Dividir entre quem?
-                <CheckSection>
-                    {clientList.map((client, index) => {
-                        return(
-                            <ClientCheckInput
-                                key={index}
-                                index={index}
-                                name={client.name}
-                                checkedState={checkedState[index]} 
-                                setCheckedState={setCheckedState}
-                                handleOnChange={handleOnChange}
+        <>
+            <Header/>
+            <Wrapper>            
+                <button 
+                    className="resetTableBtn"
+                    onClick={() => resetTable()}
+                >Redefinir os cliente da mesa</button>
+                        
+                <Form onSubmit={addOrder}>   
+                    <section>
+                    <label htmlFor="value">
+                            Valor a ser dividido (R$):
+                        </label>
+                            <Input
+                                id="value"
+                                name="value"
+                                type="text"
+                                value={newValue}
+                                onChange={valueHandler}
+                                required
                             />
-                        )
-                    })}
-                </CheckSection>   
+                    </section>           
+                    Dividir entre quem?
+                    <CheckSection>
+                        {clientList.map((client, index) => {
+                            return(
+                                <ClientCheckInput
+                                    key={index}
+                                    index={index}
+                                    name={client.name}
+                                    checkedState={checkedState[index]} 
+                                    setCheckedState={setCheckedState}
+                                    handleOnChange={handleOnChange}
+                                />
+                            )
+                        })}
+                    </CheckSection>   
 
-                <button
+                    <button
 
-                    className="addValueBtn"
-                    type="submit"
-                >
-                        Adicionar valor
+                        className="addValueBtn"
+                        type="submit"
+                    >
+                            Adicionar valor
                     </button>
-            </Form>
+                </Form>
 
-            <>
-                    
-
+                <>
                     <ServiceTaxModal
                         openModal={openModal}
                         setOpenModal={() => setOpenModal(!openModal)}
@@ -104,19 +105,20 @@ export const AddValuePage = () => {
                     >Fechar conta</button>
                 </>
 
-            <Division></Division>
+                <Division></Division>
 
-            {clientList.map((client, index) => {
-                return(
-                    <ClientCard
-                        key={index}
-                        index={index}
-                        name={client.name}
-                        totalAmount={client.total}
-                    />
-                )
-            })}
-        </Wrapper>
+                {clientList.map((client, index) => {
+                    return(
+                        <ClientCard
+                            key={index}
+                            index={index}
+                            name={client.name}
+                            totalAmount={client.total}
+                        />
+                    )
+                })}
+            </Wrapper>
+        </>
     )
 }
 
