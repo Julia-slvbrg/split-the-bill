@@ -37,7 +37,7 @@ export const ClientCard = ({ name, totalAmount, index, removeClient }) => {
             return(
                 <CardValueSection>
                     <p className="clientName">{index + 1} - {name}</p> 
-                    <p className='value'>{parcialDivision}</p>
+                    <p className="value">{parcialDivision}</p>
                 </CardValueSection>
             );
 
@@ -48,10 +48,10 @@ export const ClientCard = ({ name, totalAmount, index, removeClient }) => {
             });
 
             return(
-                <div>
-                    <p>{index + 1} - {name}</p>
-                    <p>{amountToPay}</p>
-                </div>
+                <CardValueSection>
+                    <p className="clientName">{index + 1} - {name}</p>
+                    <p className="value">{amountToPay}</p>
+                </CardValueSection>
             )
         }
     };
