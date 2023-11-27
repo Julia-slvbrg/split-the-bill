@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    padding: .5em;
+    padding: 1em;
     & button{
         font-family: 'Inter', sans-serif;
         font-weight: 700;
         font-size: .8em;
         border: none;
         border-radius: .5em;
-        //height: 100%;
         color: #d3cfe2ae;
     }
      .resetTableBtn{
+        margin-top: 1em;
         height: 2em;
         width: 16em;
     } 
