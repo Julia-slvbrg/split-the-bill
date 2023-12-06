@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import ClientCard from "../../components/clientCard/ClientCard";
-import { GlobalContext } from "../../components/contexts/GlobalContext";
+import { GlobalContext } from "../../contexts/GlobalContext";
 import { goToMainPage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 import { ResetTableBtn, Title, Wrapper } from "./FinalValuePageStyle";
@@ -10,7 +10,7 @@ function FinalValuePage() {
     const context = useContext(GlobalContext);
     const navigate = useNavigate();
 
-    const {clientList} = context;
+    const { stateClientList } = context;
 
     const resetTable = () => {
         goToMainPage(navigate);
@@ -22,7 +22,7 @@ function FinalValuePage() {
             <Header/>
             <Wrapper>
                 <Title>Os valores que cada um deve pagar são:</Title>
-                {clientList.map((client, index) => {
+                {stateClientList.clientList.map((client, index) => {
                     return(
                         <ClientCard
                             key={index}

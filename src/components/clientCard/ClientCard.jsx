@@ -4,7 +4,7 @@ import { CardBtnSection, CardValueSection } from "./ClientCardStyle";
 
 export const ClientCard = ({ name, totalAmount, index, removeClient }) => {
     const location = useLocation();
-
+    
     const chooseCard = () => {
         if(location.pathname === '/'){
 

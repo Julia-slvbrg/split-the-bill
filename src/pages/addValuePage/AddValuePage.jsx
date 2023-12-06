@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import ClientCheckInput from "../../components/clientCheckInput/clientCheckInput";
-import { GlobalContext } from "../../components/contexts/GlobalContext"
+import { GlobalContext } from "../../contexts/GlobalContext";
 import { useContext, useEffect } from "react"
 import { goToMainPage } from "../../routes/coordinator";
 import ClientCard from "../../components/clientCard/ClientCard";
@@ -12,10 +12,10 @@ export const AddValuePage = () => {
     const context = useContext(GlobalContext);
     const navigate = useNavigate();
 
-    const {clientList, newValue, valueHandler, addOrder, payingClients, setPayingClients, checkedState, setCheckedState, reset, openModal, setOpenModal, addServiceTax} = context;
+    const {newValue, valueHandler, addOrder, payingClients, setPayingClients, checkedState, setCheckedState, reset, openModal, setOpenModal, addServiceTax, stateClientList} = context;
 
     useEffect(()=> {
-        setCheckedState(new Array(clientList.length).fill(false));
+        setCheckedState(new Array(stateClientList.clientList.length).fill(false));
         setPayingClients([]);
     }, [reset]);
 
@@ -23,10 +23,9 @@ export const AddValuePage = () => {
         const updatedCheckedState = checkedState.map((item, index) =>{
             if(index === position){
                 if(item == false){
-                    setPayingClients([...payingClients, clientList[position]]);
-                    console.log(clientList[position]);
+                    setPayingClients([...payingClients, stateClientList.clientList[position]]);
                 }else{
-                    const updatePayignClient = payingClients.filter(client => client !== clientList[position]);
+                    const updatePayignClient = payingClients.filter(client => client !== stateClientList.clientList[position]);
                     setPayingClients(updatePayignClient);
                 };
                 
@@ -69,7 +68,7 @@ export const AddValuePage = () => {
                     </section>           
                     Dividir entre quem?
                     <CheckSection>
-                        {clientList.map((client, index) => {
+                        {stateClientList.clientList.map((client, index) => {
                             return(
                                 <ClientCheckInput
                                     key={index}
@@ -82,7 +81,6 @@ export const AddValuePage = () => {
                             )
                         })}
                     </CheckSection>   
-
                     <button
 
                         className="addValueBtn"
@@ -107,7 +105,7 @@ export const AddValuePage = () => {
 
                 <Division></Division>
 
-                {clientList.map((client, index) => {
+                {stateClientList.clientList.map((client, index) => {
                     return(
                         <ClientCard
                             key={index}

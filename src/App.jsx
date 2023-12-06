@@ -1,13 +1,16 @@
-import GlobaState from "./components/contexts/GlobalState";
+import { ClientProvider } from "./contexts/ClientContext";
+import GlobalState from "./contexts/GlobalState";
 import { Router } from "./routes/Router";
 
 
 function App() {
   
   return (
-    <GlobaState>
-      <Router/>
-    </GlobaState>
+    <ClientProvider>
+      <GlobalState>
+        <Router/>
+      </GlobalState>
+    </ClientProvider>
   )
 }
 

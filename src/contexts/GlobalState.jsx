@@ -1,16 +1,15 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import { GlobalContext } from "./GlobalContext";
+import { clientReducer, initialState } from "../store/reducers/clientListReducer";
 
-export default function GlobaState({ children }) {
-
-    const [clientList, setClientList] = useState([]);
+export default function GlobalState({ children }) {
     const [newClient, setNewClient] = useState('');
     const [newValue, setNewValue] = useState('');
     const [payingClients, setPayingClients] = useState([]);
     const [checkedState, setCheckedState] = useState([]);
     const [reset, setReset] = useState(false);
     const [openModal, setOpenModal] = useState(false);
-
+    const [stateClientList, dispatch] = useReducer(clientReducer, initialState);
 
     const clientHandler = (e) => {
         setNewClient(e.target.value)
@@ -21,17 +20,13 @@ export default function GlobaState({ children }) {
 
         if(newClient === '' || newClient === ' ') return alert('O nome não pode ser vazio.');
 
-        const checkClient = clientList.find((client) => client.name.toLocaleLowerCase() === newClient.toLocaleLowerCase());
+        const checkClient = stateClientList.clientList.find((client) => client.name.toLocaleLowerCase() === newClient.toLocaleLowerCase());
         
         if(!checkClient){
-            setClientList([...clientList,
-                {
-                    name: newClient,
-                    food: [],
-                    value: [],
-                    total: 0
-                }
-            ]);
+            dispatch({
+                type: 'ADD_USER',
+                payload: newClient
+            });
             setNewClient('');
         }else{
             alert('O nome já foi cadastrado.')
@@ -39,10 +34,10 @@ export default function GlobaState({ children }) {
     };
 
     const removeClient = (clientName) => {
-
-        const newList = clientList.filter((client) => client.name !== clientName);
-
-        return setClientList(newList);
+        dispatch({
+            type: 'DELETE_USER',
+            payload: clientName
+        });
     };
  
     const valueHandler = (e) => {
@@ -50,42 +45,26 @@ export default function GlobaState({ children }) {
     };
 
     const updateClientList = (dividedValue) => {
-        setClientList(prevClientList => {
-            const updatedClients = prevClientList.map(client => {
-                
-                const payingClient = payingClients.find(payingClient => payingClient.name === client.name);
+        
+        const updatedClients = stateClientList.clientList.map(client => {
+            const payingClient = payingClients.find(payingClient => payingClient.name === client.name);
 
                 if(payingClient){
-                    return{
-                        ...client,
-                        value: [...client.value, dividedValue]
-                    }
+                    dispatch({
+                        type: 'ADD_VALUE',
+                        payload: {
+                            clientName: client.name,
+                            dividedValue: dividedValue
+                        }
+                    })
                 };
-
-                return client;
-            });
-
-            return updatedClients;
-        })
+        });
+        return updatedClients
     };
 
     const getTotalValue = () => {
-        setClientList(prevClientList => {
-            const updateTotal = prevClientList.map(client => {
-                let sumValue = 0;
-                
-                if(client.value.length > 0){ 
-                    sumValue = client.value.reduce((sum, currentValue) => sum + currentValue);
-                    
-                    return{
-                        ...client,
-                        total: sumValue
-                    }
-                };
-
-                return client;
-            });
-            return updateTotal;
+        dispatch({
+            type: 'GET_TOTAL'
         })
     };
 
@@ -107,22 +86,13 @@ export default function GlobaState({ children }) {
     };
 
     const addServiceTax = (serviceTax) => {
-        setClientList(prevClientList => {
-            const updatedTotal = prevClientList.map(client => {
-                const newTotal = client.total * serviceTax
-
-                return{
-                    ...client,
-                    total: newTotal
-                };
-            });
-            
-            return updatedTotal
+        dispatch({
+            type: 'ADD_SERVICE_TAX',
+            payload: serviceTax
         })
     };
 
     const data = {
-        clientList, 
         addClient,
         removeClient, 
         clientHandler, 
@@ -137,8 +107,10 @@ export default function GlobaState({ children }) {
         reset,
         openModal, 
         setOpenModal,
-        addServiceTax
+        addServiceTax,
+        stateClientList
     };
+   
 
     return(
         <GlobalContext.Provider value={data}>
