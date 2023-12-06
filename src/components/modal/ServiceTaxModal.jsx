@@ -15,7 +15,7 @@ export const ServiceTaxModadal = ({ openModal, setOpenModal, addServiceTax }) =>
                             <CloseBtn 
                                 onClick={setOpenModal}
                             >
-                                <span class="material-symbols-outlined">
+                                <span className="material-symbols-outlined">
                                     close
                                 </span>
                             
@@ -42,29 +42,7 @@ export const ServiceTaxModadal = ({ openModal, setOpenModal, addServiceTax }) =>
                                 15%
                             </button>
                         </TaxBtnSection>
-
-
-
-                    </ContentContainer>
-                    {/* <div>
-                        <button 
-                            onClick={() => {
-                                addServiceTax(1.1)
-                                goToFinalValuePage(navigate)
-                            }}
-                        >
-                            10%
-                        </button>
-                        <button 
-                            onClick={() => {
-                                addServiceTax(1.15)
-                                goToFinalValuePage(navigate)
-                            }}
-                        >
-                            15%
-                        </button>
-                    </div> */}
-                    
+                    </ContentContainer>                    
                 </Wrapper>
             </Backkground>
         )

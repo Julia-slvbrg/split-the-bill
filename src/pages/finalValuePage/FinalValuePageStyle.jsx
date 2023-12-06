@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
 export const Title = styled.h1`
     font-size: 1.6em;
     line-height: 1.1;
-    margin-bottom: 1em;
+    margin-bottom: 1.8em;
 `
 export const ResetTableBtn = styled.button`
     color: #FFFF;

@@ -1,9 +1,9 @@
 import styled from "styled-components";
+
 export const Wrapper = styled.section`
     background-color: #cac5dfad;
     color: #ffff;
     height: 6em;
-    //padding: .1em;
     display: flex;
     flex-direction: row;
     justify-content: center;
