@@ -1,13 +1,9 @@
 import styled from "styled-components";
 
-export const MainPageContainer = styled.div`
-    padding: -22em;
-`
 export const Wrapper = styled.div`
-    padding: 2em;
-
+    padding: 1em;
+    margin: .4em;
     & button{
-        color: #FFFF;
         font-family: 'Inter', sans-serif;
         font-weight: 700;
         font-size: .8em;
@@ -15,6 +11,11 @@ export const Wrapper = styled.div`
         border-radius: .5em;
         height: 100%;
         color: #d3cfe2ae;
+
+            &:active{
+                text-decoration: underline;
+                color: #fff;
+            }
     }
 `
 export const Title = styled.h1`
@@ -46,6 +47,6 @@ export const AddValueSection = styled.section`
 `
 export const Division = styled.div`
     background-color:  #d3cfe2ae;
-    width: 20em;
+    width: 100%;
     height: .06em;
 `

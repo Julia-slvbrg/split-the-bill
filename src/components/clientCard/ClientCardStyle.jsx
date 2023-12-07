@@ -5,9 +5,9 @@ export const CardBtnSection = styled.section`
     flex-direction: row;
     align-items: center;
     justify-content: start;
-
+        
     & p{
-        width: 20em;
+        width: 25em;
     }
     .removeClientBtn{
         width: 1.8em;
@@ -31,4 +31,3 @@ export const CardValueSection = styled.section`
         margin-left: .6em;
     }
 `
-

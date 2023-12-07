@@ -28,7 +28,6 @@ export const ContentContainer = styled.div`
     height: 9em;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    
 `
 export const CloseBtnSection = styled.section`
     grid-row: 1/2;
@@ -44,7 +43,10 @@ export const CloseBtn = styled.button`
     justify-content: center;
     .material-symbols-outlined{
         scale: .6;
-    } 
+    }
+    &:active{
+        color: #fff;
+    }
 `
 export const Heading = styled.h1`
     font-size: 1.2em;
@@ -55,10 +57,13 @@ export const TaxBtnSection = styled.section`
     flex-direction: row;
     gap: 2em;
     justify-content: center;
-
     & button{
         margin-top: 1em;
         height: 2em;
         width: 4em;
+        &:active{
+            text-decoration: underline;
+            color: #fff;
+        }
     }
 `
