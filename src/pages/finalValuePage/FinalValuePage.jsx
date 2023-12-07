@@ -9,7 +9,6 @@ import { Header } from "../../components/header/Header";
 function FinalValuePage() {
     const context = useContext(GlobalContext);
     const navigate = useNavigate();
-
     const { stateClientList } = context;
 
     const resetTable = () => {

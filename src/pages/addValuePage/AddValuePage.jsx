@@ -1,17 +1,16 @@
 import { useNavigate } from "react-router";
-import ClientCheckInput from "../../components/clientCheckInput/clientCheckInput";
+import ClientCheckInput from "../../components/clientCheckInput/ClientCheckInput";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { useContext, useEffect } from "react"
 import { goToMainPage } from "../../routes/coordinator";
 import ClientCard from "../../components/clientCard/ClientCard";
 import ServiceTaxModal from "../../components/modal/ServiceTaxModal";
-import { Wrapper, Form, Input, CheckSection, Division } from "./AddValuePageStyle";
+import { Wrapper, Form, Input, CheckSection, Division, FormSection } from "./AddValuePageStyle";
 import { Header } from "../../components/header/Header";
 
 export const AddValuePage = () => {
     const context = useContext(GlobalContext);
     const navigate = useNavigate();
-
     const {newValue, valueHandler, addOrder, payingClients, setPayingClients, checkedState, setCheckedState, reset, openModal, setOpenModal, addServiceTax, stateClientList} = context;
 
     useEffect(()=> {
@@ -53,7 +52,7 @@ export const AddValuePage = () => {
                 >Redefinir os cliente da mesa</button>
                         
                 <Form onSubmit={addOrder}>   
-                    <section>
+                    <FormSection>
                     <label htmlFor="value">
                             Valor a ser dividido (R$):
                         </label>
@@ -65,7 +64,7 @@ export const AddValuePage = () => {
                                 onChange={valueHandler}
                                 required
                             />
-                    </section>           
+                    </FormSection>           
                     Dividir entre quem?
                     <CheckSection>
                         {stateClientList.clientList.map((client, index) => {
@@ -82,12 +81,9 @@ export const AddValuePage = () => {
                         })}
                     </CheckSection>   
                     <button
-
                         className="addValueBtn"
                         type="submit"
-                    >
-                            Adicionar valor
-                    </button>
+                    >Adicionar valor</button>
                 </Form>
 
                 <>

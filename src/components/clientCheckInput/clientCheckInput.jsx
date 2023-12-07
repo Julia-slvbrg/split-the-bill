@@ -1,7 +1,8 @@
+import { Label } from "./ClientCheckInputStyle"
+
 export const ClientCheckInput = ({ name, index, checkedState, handleOnChange }) => {
     return(
-       
-        <label>
+        <Label>
             <input
                 type="checkbox"
                 id={`custom-checkbox-${index}`}
@@ -11,7 +12,7 @@ export const ClientCheckInput = ({ name, index, checkedState, handleOnChange }) 
                 onChange={() => handleOnChange(index)}
             />
             {name}
-        </label>
+        </Label>
     )
 }
 
