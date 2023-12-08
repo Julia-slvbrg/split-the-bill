@@ -7,7 +7,7 @@ export const Backkground = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(56, 58, 58, 0.7); 
+    background-color: rgba(56, 58, 58, 0.7); 
     z-index: 1000;
 `
 export const Wrapper = styled.div`
@@ -48,7 +48,8 @@ export const CloseBtn = styled.button`
         border-radius: 3px;
     }
     &:active{
-        color: #fff;
+        transform: scale(1.1);
+        transform: all ease .6s;
     }
 `
 export const Heading = styled.h1`
@@ -61,7 +62,7 @@ export const TaxBtnSection = styled.section`
     gap: 2em;
     justify-content: center;
     
-    & button{
+    .serviceTaxtn{
         margin-top: 1em;
         height: 2em;
         width: 4em;
