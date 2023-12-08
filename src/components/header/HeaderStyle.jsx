@@ -12,6 +12,7 @@ export const Wrapper = styled.section`
     & h1{
         font-size: 2em;
     }
+
 `
 export const Icon = styled.span`
     scale: 2.5;

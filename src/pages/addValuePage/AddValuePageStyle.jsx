@@ -8,7 +8,8 @@ export const Wrapper = styled.div`
         font-size: .8em;
         border: none;
         border-radius: 5px;
-        color: #d3cfe2ae;
+        color: #FFFF;
+        background-color: #d3cfe26f;
 
         &:active{
             text-decoration: underline;
@@ -63,7 +64,7 @@ export const CheckSection = styled.section`
 `
 export const Division = styled.div`
     margin: 1em 0;
-    background-color:  #d3cfe2ae;
+    background-color: #d3cfe2ae;
     width: 20em;
     height: .06em;
 

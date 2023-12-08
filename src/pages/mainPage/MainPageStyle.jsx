@@ -1,21 +1,24 @@
 import styled from "styled-components";
 
+export const MainPageContainer = styled.div`
+   
+`
 export const Wrapper = styled.div`
-    padding: 1em;
-    margin: .4em;
+    padding: 2em;
     & button{
+        color: #FFFF;
         font-family: 'Inter', sans-serif;
         font-weight: 700;
         font-size: .8em;
         border: none;
         border-radius: .5em;
         height: 100%;
-        color: #d3cfe2ae;
+        background-color: #d3cfe26f;
 
-            &:active{
-                text-decoration: underline;
-                color: #fff;
-            }
+        &:active{
+            text-decoration: underline;
+            color: #fff;
+        }
     }
 `
 export const Title = styled.h1`
@@ -47,6 +50,21 @@ export const AddValueSection = styled.section`
 `
 export const Division = styled.div`
     background-color:  #d3cfe2ae;
-    width: 100%;
+    width: 20em;
     height: .06em;
+    @media screen and (min-width: 280px) and (max-width: 359px) {
+        width: 17em;
+    }
+    @media screen and (min-width: 360px) and (max-width: 365px) {
+        width: 19em;
+    }
+    @media screen and (min-width: 366px) and (max-width: 390px) {
+        width: 20em;
+    }
+    @media screen and (min-width: 395px) and (max-width: 419px) {
+        width: 22em;
+    }
+    @media screen and (min-width: 420px) and (max-width: 460px) {
+        width: 23em;
+    }
 `

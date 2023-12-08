@@ -15,7 +15,7 @@ export const ResetTableBtn = styled.button`
     border: none;
     border-radius: .5em;
     height: 100%;
-    color: #d3cfe2ae;
+    background-color: #d3cfe26f;
     height: 2.5em;
     width: 28em;
     margin-top: 3em;

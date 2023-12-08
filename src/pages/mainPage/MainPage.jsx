@@ -3,7 +3,7 @@ import ClientCard from "../../components/clientCard/ClientCard";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { useContext } from "react";
 import { goToAddValuePage } from "../../routes/coordinator";
-import { Form, Title, Input, Wrapper, AddValueSection, Division } from "./MainPageStyle";
+import { Form, Title, Input, Wrapper, AddValueSection, Division, MainPageContainer } from "./MainPageStyle";
 import { Header } from "../../components/header/Header";
 
 function MainPage() {
@@ -22,7 +22,7 @@ function MainPage() {
     };
 
     return(
-        <>
+        <MainPageContainer>
             <Header/>
             <Wrapper>
                 
@@ -69,7 +69,7 @@ function MainPage() {
                     })}
                 </section>
             </Wrapper>
-        </>
+        </MainPageContainer>
     )
 }
 
