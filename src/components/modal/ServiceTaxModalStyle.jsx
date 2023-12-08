@@ -32,17 +32,20 @@ export const ContentContainer = styled.div`
 export const CloseBtnSection = styled.section`
     grid-row: 1/2;
     justify-items: end;
-    padding-left: 13em;
+    padding-left: 13em;   
 `
 export const CloseBtn = styled.button`
     justify-items: end;
-    align-items: end;
-    height: 2em;
-    width: 2em;
+    align-items: center;
+    height: 1em;
+    width: 1em;
     display: flex;
-    justify-content: center;
+    justify-content: center;    
     .material-symbols-outlined{
-        scale: .6;
+        scale: .7;
+        background-color: rgba(70, 69, 69, 0.582);
+        border: solid rgba(70, 69, 69, 0.582) 1px;
+        border-radius: 3px;
     }
     &:active{
         color: #fff;
@@ -57,10 +60,12 @@ export const TaxBtnSection = styled.section`
     flex-direction: row;
     gap: 2em;
     justify-content: center;
+    
     & button{
         margin-top: 1em;
         height: 2em;
         width: 4em;
+        background-color: rgba(70, 69, 69, 0.582);
         &:active{
             text-decoration: underline;
             color: #fff;
