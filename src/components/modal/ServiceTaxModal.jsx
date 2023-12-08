@@ -1,3 +1,6 @@
+
+
+
 import { Backkground, ContentContainer, Heading, Wrapper, CloseBtn, CloseBtnSection, TaxBtnSection } from "./ServiceTaxModalStyle"
 import { useNavigate } from "react-router-dom"
 import { goToFinalValuePage } from "../../routes/coordinator";
@@ -25,7 +28,8 @@ export const ServiceTaxModadal = ({ openModal, setOpenModal, addServiceTax }) =>
                         <Heading>Qual é a taxa de serviço?</Heading>
 
                         <TaxBtnSection>
-                            <button 
+                           
+                            <button className="serviceTaxtn"
                                 onClick={() => {
                                     addServiceTax(1.1)
                                     goToFinalValuePage(navigate)
@@ -33,7 +37,8 @@ export const ServiceTaxModadal = ({ openModal, setOpenModal, addServiceTax }) =>
                             >
                                 10%
                             </button>
-                            <button 
+                           
+                            <button className="serviceTaxtn"
                                 onClick={() => {
                                     addServiceTax(1.15)
                                     goToFinalValuePage(navigate)
@@ -41,6 +46,7 @@ export const ServiceTaxModadal = ({ openModal, setOpenModal, addServiceTax }) =>
                             >
                                 15%
                             </button>
+                            
                         </TaxBtnSection>
                     </ContentContainer>                    
                 </Wrapper>
