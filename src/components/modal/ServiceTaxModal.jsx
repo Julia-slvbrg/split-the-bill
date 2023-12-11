@@ -1,6 +1,3 @@
-
-
-
 import { Backkground, ContentContainer, Heading, Wrapper, CloseBtn, CloseBtnSection, TaxBtnSection } from "./ServiceTaxModalStyle"
 import { useNavigate } from "react-router-dom"
 import { goToFinalValuePage } from "../../routes/coordinator";
