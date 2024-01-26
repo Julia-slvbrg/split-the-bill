@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import ClientCheckInput from "../../components/clientCheckInput/clientCheckInput";
+import ClientCheckInput from "../../components/clientCheckInput/ClientCheckInput";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { useContext, useEffect } from "react"
 import { goToMainPage } from "../../routes/coordinator";
