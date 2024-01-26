@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
-import ClientCheckInput from "../../components/clientCheckInput/ClientCheckInput";
 import { GlobalContext } from "../../contexts/GlobalContext";
-import { useContext, useEffect } from "react"
+import { useContext, useEffect } from "react";
+import ClientCheckInput from "../../components/clientCheckInput/ClientCheckInput";
 import { goToMainPage } from "../../routes/coordinator";
 import ClientCard from "../../components/clientCard/ClientCard";
 import ServiceTaxModal from "../../components/modal/ServiceTaxModal";
