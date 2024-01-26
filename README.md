@@ -34,7 +34,7 @@ This mobile application aims to facilitate splitting bills among consumers at an
 
 ## Demonstration
 
-[Link (deploy)](https://divide-a-conta.surge.sh/)
+[Link (deploy)](https://divide-a-conta.vercel.app/)
 
 
 https://github.com/Julia-slvbrg/split-the-check/assets/114543081/406c3626-3617-4b42-9066-74a359be5d5c
